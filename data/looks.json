@@ -1,3 +1,22 @@
 {
-  "looks": []
+  "looks": [
+    {
+      "id": "murc2yi0navf3",
+      "imageUrl": "https://i.pinimg.com/736x/f5/84/ea/f584eaaedb780fbef960af71cd64ff53.jpg",
+      "category": "korean",
+      "title": "",
+      "altText": "",
+      "products": [
+        {
+          "url": "https://fairypeony.com/products/2000s-vintage-lace-trim-camisole-top-off-shoulder-sleeveless-slim-fit-tank-in-white",
+          "title": "2000s Vintage Lace Trim Camisole Top – Off-Shoulder Sleeveless Slim Fit Tank in White",
+          "image": "https://cdn.shopify.com/s/files/1/0604/5325/7407/files/2000s_Vintage_Lace_Trim_Camisole_Top_Off-Shoulder_Sleeveless_Slim_Fit_Tank_in_White_fairypeony.jpg?v=1790163177",
+          "price": "$18.00"
+        }
+      ],
+      "width": 735,
+      "height": 985,
+      "createdAt": 1790967960360
+    }
+  ]
 }
