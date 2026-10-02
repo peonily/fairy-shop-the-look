@@ -1,0 +1,55 @@
+{
+  "looks": [
+    {
+      "id": "mur6poplel5hb",
+      "imageUrl": "https://i.pinimg.com/736x/c3/d8/3c/c3d83c0c88d3d2a3a2bf1181c548cb5d.jpg",
+      "category": "y2k",
+      "title": "",
+      "altText": "",
+      "products": [
+        {
+          "url": "https://fairypeony.com/products/reversible-oversize-fleece-hooded-jacket",
+          "title": "Reversible Oversize Fleece Hooded Jacket",
+          "image": "https://cdn.shopify.com/s/files/1/0604/5325/7407/products/Reversible-Oversize-Fleece-Hooded-Jacket-fairypeony.jpg?v=1669081068",
+          "price": "$43.00"
+        },
+        {
+          "url": "https://fairypeony.com/products/color-block-oversized-waterproof-jacket",
+          "title": "Color Block Oversized Waterproof Jacket",
+          "image": "https://cdn.shopify.com/s/files/1/0604/5325/7407/files/Color-Block-Oversized-Waterproof-Jacket-fairypeony.jpg?v=1695922280",
+          "price": "$37.00"
+        }
+      ],
+      "createdAt": 1790958943065
+    },
+    {
+      "id": "mur6sclgc992a",
+      "imageUrl": "https://i.pinimg.com/736x/f3/81/aa/f381aa9911c6b98c50edde94b4a843c8.jpg",
+      "category": "korean",
+      "title": "",
+      "altText": "",
+      "products": [
+        {
+          "url": "https://fairypeony.com/products/stand-collar-wool-plaid-jacket-retro-crossbody-bag",
+          "title": "Stand Collar Wool Plaid Jacket + Retro Crossbody Bag",
+          "image": "https://cdn.shopify.com/s/files/1/0604/5325/7407/files/Stand_Collar_Wool_Plaid_Jacket_Retro_Crossbody_Bag_fairypeony.jpg?v=1787407798",
+          "price": "$87.74"
+        },
+        {
+          "url": "https://fairypeony.com/products/lamb-wool-lapel-puffer-jacket-reversible-dual-sided-shoulder-bag",
+          "title": "Lamb Wool Lapel Puffer Jacket + Reversible Dual-Sided Shoulder Bag",
+          "image": "https://cdn.shopify.com/s/files/1/0604/5325/7407/files/Lamb_Wool_Lapel_Puffer_Jacket_Reversible_Dual-Sided_Shoulder_Bag_fairypeony.jpg?v=1787407312",
+          "price": "$72.54"
+        },
+        {
+          "url": "https://fairypeony.com/products/hooded-patchwork-denim-jacket-pu-leather-vintage-backpack-1",
+          "title": "Hooded Patchwork Denim Jacket + PU Leather Vintage Backpack",
+          "image": "https://cdn.shopify.com/s/files/1/0604/5325/7407/files/Hooded_Patchwor_Denim_Jacket_PU_Leather_Vintage_Backpack_fairypeony.jpg?v=1787407101",
+          "price": "$68.06"
+        }
+      ],
+      "createdAt": 1790959067332,
+      "updatedAt": 1790959084159
+    }
+  ]
+}

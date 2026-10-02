@@ -1,0 +1,8 @@
+{
+  "name": "fairy-peony-shop-the-look",
+  "private": true,
+  "scripts": {
+    "looks:app": "node tools/looks-admin/server.js",
+    "looks:build": "node tools/build-looks.js"
+  }
+}

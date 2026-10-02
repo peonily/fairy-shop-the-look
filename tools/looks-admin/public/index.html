@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fairy Peony Look Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Space+Grotesk:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="appShell">
+      <section class="hero">
+        <div class="hero__eyebrow">Fairy Peony</div>
+        <h1>Shop the Look Publisher</h1>
+        <p>
+          Paste the Pinterest image link and the product links from fairypeony.com, choose the category, and the app
+          will fetch each product's name, photo and price, save the look, and rebuild the Shop the Look page. When you
+          are happy, press Push live to send it to GitHub.
+        </p>
+      </section>
+
+      <section class="grid">
+        <form id="lookForm" class="panel">
+          <div class="panel__head">
+            <h2 id="formTitle">Inputs</h2>
+            <p id="formHint">Only the image link and a category are required. Add product links when you have them.</p>
+          </div>
+
+          <div id="editBanner" class="editBanner" hidden>
+            <span id="editText">Editing a published look</span>
+            <button type="button" id="cancelEdit" class="linkBtn">Cancel</button>
+          </div>
+
+          <label class="field">
+            <span>Pinterest image link</span>
+            <input id="imageUrl" name="imageUrl" type="url" required placeholder="https://i.pinimg.com/..." />
+            <small class="field__hint">
+              On Pinterest right-click the image and choose Copy image address. A normal pinterest.com/pin link also
+              works most of the time.
+            </small>
+          </label>
+
+          <label class="field">
+            <span>Product links from fairypeony.com</span>
+            <textarea id="productUrls" name="productUrls" rows="5"
+              placeholder="One product link per line&#10;https://fairypeony.com/products/...&#10;https://fairypeony.com/products/..."></textarea>
+            <small class="field__hint">One link per line. Name, photo and price are filled in automatically.</small>
+          </label>
+
+          <label class="field">
+            <span>Category</span>
+            <select id="category" name="category">
+              <option value="y2k">Y2K</option>
+              <option value="korean">Korean</option>
+              <option value="pieces">Pieces</option>
+              <option value="lookbook">Lookbook</option>
+            </select>
+          </label>
+
+          <details class="advanced">
+            <summary>Optional overrides</summary>
+            <label class="field">
+              <span>Look name</span>
+              <input id="title" name="title" type="text" placeholder="e.g. Cherry Cola Cutie" />
+            </label>
+            <label class="field">
+              <span>Image alt text</span>
+              <input id="altText" name="altText" type="text" placeholder="Optional description for accessibility" />
+            </label>
+          </details>
+
+          <div class="actions">
+            <button type="submit" class="btn btn--ghost">Preview</button>
+            <button type="button" id="publishBtn" class="btn btn--primary">Publish to site</button>
+          </div>
+
+          <div id="status" class="status" aria-live="polite"></div>
+        </form>
+
+        <section class="panel panel--preview">
+          <div class="panel__head">
+            <h2>Preview</h2>
+            <p>Check the image and the products it found before saving.</p>
+          </div>
+
+          <div id="emptyState" class="emptyState">Run a preview to see the look and the products it found.</div>
+
+          <div id="preview" class="preview" hidden>
+            <div class="previewCard">
+              <img id="previewImage" alt="" referrerpolicy="no-referrer" />
+              <div>
+                <div id="previewTitle" class="previewCard__title"></div>
+                <div id="previewCategory" class="previewCard__meta"></div>
+                <div id="previewCount" class="previewCard__meta"></div>
+              </div>
+            </div>
+
+            <div class="metaGrid">
+              <div class="metaBox">
+                <div class="metaBox__label">Data file</div>
+                <code id="previewData"></code>
+              </div>
+              <div class="metaBox">
+                <div class="metaBox__label">Page file</div>
+                <code id="previewPage"></code>
+              </div>
+              <div class="metaBox metaBox--full">
+                <div class="metaBox__label">Products</div>
+                <div id="previewProducts" class="productList"></div>
+              </div>
+              <div class="metaBox metaBox--full" id="warnBox" hidden>
+                <div class="metaBox__label">Heads up</div>
+                <ul id="previewWarnings" class="warnList"></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel libraryPanel">
+        <div class="libraryHead">
+          <div class="panel__head">
+            <h2>Published looks</h2>
+            <p id="libraryHint">Everything saved so far. Edit or delete any look.</p>
+          </div>
+          <div class="actions actions--end">
+            <a class="btn btn--ghost" href="/site/" target="_blank" rel="noreferrer">Open page preview</a>
+            <button type="button" id="pushBtn" class="btn btn--primary">Push live</button>
+          </div>
+        </div>
+        <div id="pushStatus" class="status" aria-live="polite"></div>
+        <div id="filters" class="filters"></div>
+        <div id="bulkBar" class="bulkBar">
+          <label class="bulkBar__all"><input type="checkbox" id="selectAll" /> <span>Select all shown</span></label>
+          <span id="selectedCount" class="bulkBar__count">None selected</span>
+          <button type="button" id="deleteSelected" class="btn btn--danger btn--small" disabled>Delete selected</button>
+        </div>
+        <div id="library" class="library"></div>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
