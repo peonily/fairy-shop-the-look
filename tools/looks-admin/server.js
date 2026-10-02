@@ -1,6 +1,6 @@
 // Fairy Peony "Shop the Look" admin. Runs ONLY on your computer (localhost).
 //   npm run looks:app     ->  http://localhost:4320
-// Saves data/looks.json and rebuilds public/index.html. "Push live" sends it to GitHub.
+// Saves data/looks.json and rebuilds index.html. "Push live" sends it to GitHub.
 
 const fs = require("node:fs");
 const http = require("node:http");
@@ -10,7 +10,7 @@ const { renderSite, CATEGORIES } = require("./render");
 
 const ROOT_DIR = path.resolve(__dirname, "..", "..");
 const DATA_FILE = path.join(ROOT_DIR, "data", "looks.json");
-const SITE_DIR = path.join(ROOT_DIR, "public");
+const SITE_DIR = ROOT_DIR; // the website lives at the project root (index.html + static/), like Dreamy Decor
 const ADMIN_DIR = path.join(__dirname, "public");
 
 const PORT = Number(process.env.PORT || 4320);
@@ -223,7 +223,7 @@ async function analyze(input) {
     products,
     warnings,
     dataFile: "data/looks.json",
-    pageFile: "public/index.html",
+    pageFile: "index.html",
   };
 }
 
@@ -296,7 +296,8 @@ async function pushLive() {
       "This folder is not connected to GitHub yet. One time only: open a terminal here and run  git init, git remote add origin <your repo link>, git branch -M main."
     );
   }
-  await git(["add", "data", "public"]);
+  const siteFiles = ["index.html", "static", "data", "_headers", "robots.txt"].filter((f) => fs.existsSync(path.join(ROOT_DIR, f)));
+  await git(["add", "--", ...siteFiles]);
   const commit = await git(["commit", "-m", "Update Shop the Look"]);
   const nothing = /nothing (added )?to commit|no changes added/i.test(commit.out);
   if (commit.code !== 0 && !nothing) throw new Error(commit.out || "Commit failed.");
@@ -378,7 +379,9 @@ const server = http.createServer(async (req, res) => {
         return res.end();
       }
       if (!fs.existsSync(path.join(SITE_DIR, "index.html"))) buildSite();
-      return sendFile(res, SITE_DIR, decodeURIComponent(p.replace(/^\/site\/?/, "")) || "index.html");
+      const rel = path.posix.normalize(decodeURIComponent(p.replace(/^\/site\/?/, "")) || "index.html");
+      if (rel !== "index.html" && !rel.startsWith("static/")) return json(res, 404, { error: "Not found." });
+      return sendFile(res, SITE_DIR, rel);
     }
 
     if (req.method === "GET") return sendFile(res, ADMIN_DIR, p === "/" ? "index.html" : decodeURIComponent(p.slice(1)));

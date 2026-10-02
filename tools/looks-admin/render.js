@@ -1,4 +1,4 @@
-// Turns data/looks.json into the static public page (public/index.html).
+// Turns data/looks.json into the static public page (index.html at the project root).
 // No dependencies. Used by the admin app and by `npm run looks:build`.
 
 const CATEGORIES = [
@@ -29,7 +29,7 @@ const crypto = require("node:crypto");
 // Adds ?v=<fingerprint> to the CSS/JS links so phones and browsers always fetch the newest files after an update.
 function assetVersion(file) {
   try {
-    const buf = fs.readFileSync(path.join(__dirname, "..", "..", "public", "static", file));
+    const buf = fs.readFileSync(path.join(__dirname, "..", "..", "static", file));
     return crypto.createHash("md5").update(buf).digest("hex").slice(0, 10);
   } catch {
     return String(Date.now());

@@ -1,6 +1,6 @@
 # FAIRY PEONY · Shop the Look
 
-A static page (Y2K · Korean · Pieces · Lookbook) with a local admin app, built the same way as Dreamy Decor.
+A static page (All · Y2K · Korean · Pieces · Lookbook) with a local admin app, built the same way as Dreamy Decor. The website sits at the top level of this folder (`index.html` + `static/`), so Cloudflare Pages needs no special settings.
 
 ## Run the admin (on your computer only)
 
@@ -17,21 +17,35 @@ Open http://localhost:4320 and:
 3. Pick the category and press **Publish to site**.
 4. Press **Push live** to send it to GitHub. Cloudflare Pages updates the page by itself.
 
-Edit or delete older looks from the "Published looks" section.
+Edit or delete older looks (one by one or several at once) from "Published looks".
 
 ## Files
 
+- `index.html` – the page visitors see (rebuilt on every publish and every time the admin starts)
+- `static/` – the page's styling and popup script
 - `data/looks.json` – your saved looks
-- `public/index.html` – the page visitors see (rebuilt on every publish; `npm run looks:build` rebuilds it by hand)
-- `public/static/` – the page's styling and popup script
-- `tools/looks-admin/` – the admin app
+- `tools/looks-admin/` – the admin app (runs only on your computer)
 
-## One-time hosting setup
+## Cloudflare Pages settings
 
-1. Create a GitHub repository and connect this folder to it (`git init`, `git remote add origin <repo link>`, `git branch -M main`).
-2. Cloudflare Pages → Connect to Git → pick the repo. Build command: none. **Build output directory: `public`**.
-3. Add the Pages link (or a custom domain such as looks.fairypeony.com) to your Shopify menu.
+Connect the GitHub repo, then use:
 
-The admin app and your `data/` folder are never published, only `public/`.
+- Framework preset: **None**
+- Build command: **(leave empty)**
+- Build output directory: **`/`** (leave empty / the repo root)
+
+If the live link shows "page not found (404)", the output directory is pointing at the wrong folder. It must be the folder that contains `index.html`.
+
+## One-time GitHub link
+
+Open a terminal in this folder and run:
+
+```bash
+git init
+git remote add origin <your repo link>
+git branch -M main
+```
+
+After that, the **Push live** button does the rest.
 
 Currency symbol for fetched prices defaults to `$`. To change it, set `LOOKS_CURRENCY` (for example `LOOKS_CURRENCY=€`) before starting the app.
